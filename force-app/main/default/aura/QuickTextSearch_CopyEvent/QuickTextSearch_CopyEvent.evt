@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="QuickTextSearch_CopyEvent">
+    <aura:attribute name="quickText" type="Object" required="true" description="The quick text which should be copied"/>
+</aura:event>

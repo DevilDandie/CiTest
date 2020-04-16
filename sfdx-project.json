@@ -1,11 +1,21 @@
 {
-  "packageDirectories": [
-    {
-      "path": "force-app",
-      "default": true
+    "packageDirectories": [
+        {
+            "path": ".\\force-app\\main\\default",
+            "package": "Quick Text Search Package",
+            "versionName": "QTX ver 0.1",
+            "versionDescription": "Quick Text Search Package",
+            "versionNumber": "0.1.0.NEXT",
+            "default": true
+        }
+    ],
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "47.0",
+    "packageAliases": {
+        "Quick Text Search Package": "0Ho2w000000007qCAA",
+        "Quick Text Search Package@0.1.0-1": "04t2w000004tbGvAAI",
+        "Quick Text Search Package@0.1.0-2": "04t2w000004tbH5AAI",
+        "Quick Text Search Package@0.1.0-3": "04t2w000004tdXnAAI"
     }
-  ],
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "47.0"
 }

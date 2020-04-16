@@ -1,0 +1,43 @@
+<aura:component description="QuickTextSearch_Pagination">
+    <aura:attribute name="itemsPerPage" type="Integer" default="3"/>
+    <aura:attribute name="items" type="List" default="[]"/>
+    <aura:attribute name="currentPage" type="Integer" default="1" access="private"/>
+    <aura:attribute name="pages" type="Integer" default="0" access="private"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="paginationEntries" type="Object[]" default="[]" access="private"/>
+    <aura:attribute name="maxPageNumber" type="Integer" default="1" access="private"/>
+    <aura:attribute name="searchTerm" type="String"/>
+    <aura:attribute name="displayedItems" type="Object[]" default="[]" access="private"/>
+    <aura:method name="paginate" action="{!c.handlePaginationAction}"
+                 description="Another way to update components state">
+        <aura:attribute name="list" type="Object[]" required="true"/>
+    </aura:method>
+
+    <div class="pagination slds-m-top--small">
+        <div class="items">
+            <aura:if isTrue="{! !v.isLoading}">
+                <aura:iteration items="{!v.displayedItems}" var="item">
+                    <c:QuickTextSearch_ResultLine data="{!item}" searchTerm="{!v.searchTerm}"/>
+                </aura:iteration>
+            </aura:if>
+        </div>
+        <div class="pages">
+            <div class="{!'slds-button-group' + (v.items.length == 0 ? ' slds-hidden' : '')}" role="group">
+                <lightning:buttonIcon iconName="utility:chevronleft" value="{!v.currentPage - 1}"
+                                      alternativeText="{!$Label.c.QuickTextSearchPaginationPreviousPage}"
+                                      disabled="{!v.currentPage == 1 || v.items.length == 0}" onclick="{!c.gotoPage}"/>
+                <aura:iteration items="{!v.paginationEntries}" var="page">
+
+                    <lightning:button value="{!page.index}" label="{!page.label}" onclick="{!c.gotoPage}"
+                                      variant="{!page.index == v.currentPage ? 'brand' : 'neutral'}"
+                                      disabled="{!page.index == -1}" title="{!page.message}"/>
+
+                </aura:iteration>
+                <lightning:buttonIcon iconName="utility:chevronright" value="{!v.currentPage + 1}"
+                                      alternativeText="{!$Label.c.QuickTextSearchPaginationNextPage}"
+                                      disabled="{!v.currentPage == v.paginationEntries.length || v.items.length == 0 || v.currentPage gt 2}"
+                                      onclick="{!c.gotoPage}"/>
+            </div>
+        </div>
+    </div>
+</aura:component>

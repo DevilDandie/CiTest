@@ -1,0 +1,103 @@
+<aura:component description="QuickTextSearch" implements="force:hasRecordId,flexipage:availableForRecordHome"
+                controller="QuickTextSearchCtr">
+
+    <aura:attribute type="Integer" name="itemsPerPage" default="5" required="true"
+                    description="How many results should be showed in the pagination"/>
+    <aura:attribute type="Integer" name="maxPages" default="10" required="true"
+                    description="How many pages should the pagination maximally contain"/>
+    <aura:attribute type="Object[]" name="result" default="null" description="List of results after searching"/>
+    <aura:attribute type="Object" name="debounceHandler" access="private"
+                    description="Function stored for debouncing search input"/>
+    <aura:attribute type="Boolean" name="isLoading" default="false"
+                    description="Indicates if search request is loading"/>
+    <aura:attribute type="Boolean" name="searchMode" default="true"
+                    description="Indicates if search request is loading"/>
+    <aura:attribute type="Boolean" name="bookmarksMode" default="false"
+                    description="Indicates if search request is loading"/>
+    <aura:attribute type="Boolean" name="copyBadgeActive" default="false" access="private"/>
+    <aura:attribute type="Object[]" name="textCategories" default="[]"
+                    description="Container for quick text categories"/>
+    <aura:attribute type="String[]" name="searchHistory" default="[]" description="Container for quick text history"/>
+    <aura:attribute type="String" name="selectedCategory" description="Currently selected category value"/>
+    <aura:attribute type="String" name="searchTerm" description="Search term value from input field"/>
+    <aura:attribute type="Id" name="recordId"/>
+
+    <ltng:require
+            scripts="{!join(',', $Resource.AuraServiceHelper + '/DataService.js', $Resource.AuraServiceHelper + '/Debounce.js')}"
+            afterScriptsLoaded="{!c.scriptsLoaded}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <aura:handler event="c:QuickTextSearch_CopyEvent" action="{!c.handleCopyEvent}"/>
+
+    <div class="QuickTextSearch">
+
+        <lightning:card>
+
+            <aura:set attribute="title">
+                <lightning:icon iconName="standard:search" size="small" class="slds-m-right--x-small"/>
+                    {!$Label.c.QuickTextCardHeadline}
+
+                <div class="button-container-header">
+                    <span class="{!'slds-badge slds-theme_success copy-badge' + (v.copyBadgeActive ? ' active' : '')}">{!$Label.c.QuickTextSearchMessageCopiedSuccess}</span>
+                    <lightning:buttonIcon iconName="utility:clock" variant="bare"
+                                          iconClass="{!v.searchMode ? 'historyMode' : 'searchMode'}"
+                                          title="{!$Label.c.QuickTextSearchHistory}"
+                                          size="large"
+                                          onclick="{!c.handleSearchHistoryMode}"/>&emsp;&emsp;
+                    <lightning:buttonIcon iconName="utility:knowledge_base" variant="bare"
+                                          iconClass="{!v.bookmarksMode ? 'searchMode':'historyMode'}"
+                                          title="{!$Label.c.QuickTextSearchBookmarks}"
+                                          size="large"
+                                          onclick="{!c.handleBookmarksMode}"/>
+                </div>
+            </aura:set>
+            <aura:renderIf isTrue="{!!v.bookmarksMode}">
+                <div class="slds-p-around--small slds-border--bottom">
+
+                    <div class="search-area visible">
+                        <lightning:input type="search" label=" " value="{!v.searchTerm}" onchange="{!c.handleSearch}"
+                                         aura:id="search-input" class="hidden-label search-input"/>
+                        <lightning:select label=" " class="hidden-label category-input" name="category"
+                                          value="{!v.selectedCategory}" onchange="{!c.handleSearch}">
+                            <option value="All" selected="selected">All</option>
+                            <aura:iteration var="category" items="{!v.textCategories}">
+                                <option value="{!category.value}">{!category.label}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+
+                    <div class="result-list slds-m-top--small">
+                        <div class="{!'no-results' + (!v.searchMode ? ' visible' : '')}">
+                            <lightning:select label="History" class="hidden-label category-input" name="history"
+                                              value="{!v.searchTerm}" onchange="{!c.handleSearch}">
+                                <option style="color: dodgerblue" value="">Search History</option>
+                                <aura:iteration var="item" items="{!v.searchHistory}">
+                                    <option value="{!item}">{!item}</option>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                    </div>
+                </div>
+            </aura:renderIf>
+
+            <div class="slds-p-around--small">
+                <div class="result-list slds-m-top--small">
+                    <c:ContentPlaceholder active="{!v.isLoading}"/>
+                </div>
+                <div class="result-list slds-m-top--small">
+                    <div class="{!'no-results' + (and(v.result.length == 0, !v.isLoading) ? ' visible' : '')}">
+                            {!$Label.c.QuickTextSearchNoResult}
+                    </div>
+                    <c:QuickTextSearch_Pagination itemsPerPage="{!v.itemsPerPage}" isLoading="{!v.isLoading}"
+                                                  searchTerm="{!v.searchTerm}" aura:id="pagination"/>
+                </div>
+
+                <textarea id="clipboard"></textarea>
+
+            </div>
+
+        </lightning:card>
+    </div>
+
+</aura:component>

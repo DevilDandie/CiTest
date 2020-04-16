@@ -1,0 +1,91 @@
+@keyframes badgeFadeIn {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.THIS #clipboard {
+    height: 1px;
+    width: 1px;
+    background: #fff;
+    border: none;
+    font-size: 1px;
+    position: absolute;
+    left: -9999px;
+    z-index: 0;
+}
+
+.THIS .no-results {
+    display: none;
+    visibility: hidden;
+}
+
+.THIS .no-results.visible {
+    display: block;
+    visibility: visible;
+}
+
+.THIS .copy-badge {
+    opacity: 0;
+}
+
+.THIS .copy-badge.active {
+    animation: badgeFadeIn 2s ease-in-out;
+}
+
+.THIS .hidden-label label {
+    display: none;
+}
+
+.THIS .search-area {
+    display: flex;
+    visibility: hidden;
+}
+
+.THIS .search-area.visible {
+    display: flex;
+    visibility: visible;
+}
+
+.THIS .search-area > .search-input {
+    /*flex-grow: 2;*/
+    width: 75%;
+}
+
+.THIS .search-area > .search-input .slds-input {
+    border-radius: .25rem 0 0 .25rem;
+}
+
+.THIS .search-area > .category-input {
+    flex-grow: 1;
+}
+
+.THIS .searchMode {
+    color: red;
+    border: transparent;
+}
+
+.THIS .historyMode {
+    color: #62b7ed;
+    border: transparent;
+}
+
+.THIS .button-container-header {
+    display: inline-block;
+    max-width: 100%;
+    float: right;
+}
+
+.THIS .search-area > .category-input .slds-select {
+    border-radius: 0 .25rem .25rem 0;
+    border-left: 0;
+}

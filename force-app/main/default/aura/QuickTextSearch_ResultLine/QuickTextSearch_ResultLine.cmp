@@ -1,0 +1,44 @@
+<aura:component description="QuickTextSearch_ResultLine" controller="QuickTextSearchCtr">
+    <aura:attribute type="Object" name="data" required="true" description="Line data, contains one search result"/>
+    <aura:attribute type="Boolean" name="textVisible" default="false"
+                    description="Defines if the current text is visible or not"/>
+    <aura:attribute type="Boolean" name="isBookmarked" default="false"
+                    description="Defines if the current text is bookmarked or not"/>
+    <aura:attribute type="Object" name="displayData" description="Prepared data for displaying purposes"/>
+    <aura:attribute name="searchTerm" type="String" description="Search term for preview process"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:registerEvent name="CopyQuickTextEvent" type="c:QuickTextSearch_CopyEvent"/>
+    <div class="result">
+        <h1 class="slds-text-heading--small header" title="{!v.data.Name}">
+            <aura:unescapedHtml value="{!v.displayData.Name}"/>
+        </h1>
+        <div class="{!'text-content slds-m-bottom--small' + (v.textVisible ? ' visible' : '')}"
+             title="{!$Label.c.QuickTextSearchResultLineClickToExpand}">
+            <span class="preview" onclick="{!c.toggleVisibility}"><aura:unescapedHtml
+                    value="{!v.displayData.MessagePreview}"/></span>
+            <span class="full-message" onclick="{!c.toggleVisibility}"><aura:unescapedHtml
+                    value="{!v.displayData.Message}"/></span>
+        </div>
+        <div class="footer">
+            <div class="badges">
+                <aura:if isTrue="{!v.data.qtx.Category != null}">
+                    <span class="slds-badge slds-m-top--xx-small" title="{!v.data.qtx.Category}">{!v.data.qtx.Category}</span>
+                </aura:if>
+
+                <aura:if isTrue="{!v.data.qtx.Folder.Name != null}">
+                    <span class="slds-badge slds-m-top--xx-small"
+                          title="{!v.data.qtx.Folder.Name}">{!v.data.qtx.Folder.Name}</span>
+                </aura:if>
+            </div>
+            <div class="button-container">
+                <lightning:button iconName="utility:copy" variant="base"
+                                  label="{!$Label.c.QuickTextSearchCopyButtonLabel}" onclick="{!c.handleCopyClick}"/>
+                <lightning:buttonIcon iconName="utility:favorite" variant="bare"
+                                      iconClass="{!v.isBookmarked ? 'bookmark' : 'unbookmark'}"
+                                      title=""
+                                      onclick="{!c.handleBookmarkClick}"/>
+            </div>
+        </div>
+        <hr/>
+    </div>
+</aura:component>

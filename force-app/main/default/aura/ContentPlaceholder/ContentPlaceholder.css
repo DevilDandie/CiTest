@@ -1,0 +1,77 @@
+@keyframes placeholder {
+    0% {
+        background-position: -468px 0
+    }
+    100% {
+        background-position: 468px 0
+    }
+}
+
+.THIS.loading-indicator {
+    display: none
+}
+
+.THIS.loading-indicator.active {
+    display: block
+}
+
+.THIS .indicator div:not(.disabled):not(.loading-container) {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholder;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eee 8%, rgba(106, 145, 206, 0.2) 12%, #eee 27%);
+    background-size: 1500px 104px;
+    position: relative;
+    user-select: none
+}
+
+.THIS .indicator div:not(.disabled):not(.loading-container).short-33 {
+    width: 33%
+}
+
+.THIS .indicator div:not(.disabled):not(.loading-container).short-50 {
+    width: 50%
+}
+
+.THIS .indicator div:not(.disabled):not(.loading-container).short-66 {
+    width: 66%
+}
+
+.THIS .indicator div:not(.disabled):not(.loading-container).short-100 {
+    width: 100%
+}
+
+.THIS .indicator.text div:not(.disabled) {
+    height: 15px;
+    border-radius: 2px;
+    margin-bottom: 10px
+}
+
+.THIS .indicator.profile .profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px
+}
+
+.THIS .indicator.profile div:not(.disabled).line {
+    height: 15px;
+    border-radius: 2px;
+    margin-bottom: 10px
+}
+
+.THIS .indicator.profile div:not(.disabled).image {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%
+}
+
+.THIS .indicator.profile .loading-container {
+    flex-grow: 1
+}
+
+.THIS .indicator.profile .text-container {
+    padding: 1rem
+}

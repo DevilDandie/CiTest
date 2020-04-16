@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>QuickTextCardHeadline</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Card Headline</shortDescription>
+        <value>Search for Quick Text</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextOpen</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Open Modal</shortDescription>
+        <value>Search for Quick Text</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchBookmarks</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Bookmarks</shortDescription>
+        <value>Bookmarks</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchCopyButtonLabel</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Copy button label</shortDescription>
+        <value>Copy</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchHistory</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search History</shortDescription>
+        <value>History</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchMessageCopiedSuccess</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Message Copied Success</shortDescription>
+        <value>Copied!</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchMoreResults</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search More Results</shortDescription>
+        <value>Many more results, please adjust your search term!</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchNoResult</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search No Search Result</shortDescription>
+        <value>No results</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchPaginationNextPage</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Pagination Next Page</shortDescription>
+        <value>Next Page</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchPaginationPreviousPage</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Pagination Previous Page</shortDescription>
+        <value>Previous Page</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextSearchResultLineClickToExpand</fullName>
+        <categories>QuickTextSearch</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quick Text Search Result Line Click to Expand</shortDescription>
+        <value>Click to expand</value>
+    </labels>
+</CustomLabels>

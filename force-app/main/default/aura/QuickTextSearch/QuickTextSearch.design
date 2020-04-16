@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="itemsPerPage" label="Results per page" default="10"/>
+    <design:attribute name="maxPages" label="Max number of pages" default="10"/>
+</design:component>

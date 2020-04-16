@@ -1,0 +1,95 @@
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.THIS {
+    animation: fadein .5s;
+}
+
+.THIS .header,
+.THIS .text-content {
+    user-select: none;
+}
+
+.THIS .header {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.THIS .text-content {
+    cursor: pointer;
+}
+
+.THIS .text-content > .preview {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.THIS .text-content > .full-message {
+    display: none;
+}
+
+.THIS .text-content.visible > .preview {
+    display: none;
+}
+
+.THIS .text-content.visible > .full-message {
+    display: block;
+}
+
+.THIS .text-content.visible {
+    height: 120px;
+    white-space: normal;
+    overflow-y: auto;
+    resize: vertical;
+}
+
+.THIS .footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.THIS .footer > .button-container {
+    width: 200px;
+    flex: 0 0 100px;
+}
+
+.THIS .footer > .badges {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+}
+
+.THIS .footer > .badges .slds-badge {
+    user-select: none;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: width .5s, max-width .5s;
+}
+
+.THIS .bookmark {
+    color: red;
+    border: transparent;
+}
+
+.THIS .unbookmark {
+    color: blue;
+    border: transparent;
+}
+
+.THIS .footer > .badges .slds-badge:hover {
+    max-width: none;
+}
+
+.THIS hr {
+    margin: .6rem 0;
+}

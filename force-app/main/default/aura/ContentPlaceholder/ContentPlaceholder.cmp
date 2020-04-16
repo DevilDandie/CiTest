@@ -1,0 +1,34 @@
+<aura:component description="ContentPlaceholder">
+    <aura:attribute name="active" type="Boolean" default="true"/>
+    <aura:attribute name="type" type="String" default="text"/>
+    <div class="{!'loading-indicator ' + (v.active ? 'active' : 'disabled')}">
+        <aura:if isTrue="{!v.type == 'text'}">
+            <div class="indicator text">
+                <div class="short-50"></div>
+                <div></div>
+                <div></div>
+                <div class="short-66"></div>
+                <div></div>
+                <div></div>
+            </div>
+        </aura:if>
+        <aura:if isTrue="{!v.type == 'profile'}">
+            <div class="indicator profile">
+                <div class="disabled profile-section">
+                    <div class="disabled profile-image">
+                        <div class="image"></div>
+                    </div>
+                    <div class="loading-container text-container">
+                        <div class="line short-66"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <div class="line short-50"></div>
+                <div class="line "></div>
+                <div class="line short-66"></div>
+                <div class="line "></div>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>
